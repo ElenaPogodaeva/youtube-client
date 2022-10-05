@@ -1,7 +1,7 @@
 export interface SearchItemModel {
-  kind: string,
-  etag: string,
-  id: string,
+  kind: string;
+  etag: string;
+  id: string;
   snippet: SnippetModel;
   statistics: StatisticsModel;
 }
@@ -16,7 +16,7 @@ interface SnippetModel {
   tags: string[];
   categoryId: string;
   liveBroadcastContent: string;
-  defaultLanguage?: string
+  defaultLanguage?: string;
   localized: LocalizedModel;
   defaultAudioLanguage: string;
 }
