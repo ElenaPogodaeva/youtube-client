@@ -1,1 +1,28 @@
-<p>header works!</p>
+<header class="header">
+  <mat-toolbar class="header-container">
+    <div class="plug"></div>
+    <div class="search">
+      <div mat-raised-button color="primary" class="logo">
+        <mat-icon class="logo-icon">play_arrow</mat-icon>
+      </div>
+      <form class="search-form">
+        <mat-form-field appearance="fill" class="search-field">
+          <mat-label>Search</mat-label>
+          <input matInput type="search" class="search-input">
+        </mat-form-field>
+        <button type="button" mat-raised-button color="primary" class="search-btn">
+          Search
+        </button>
+      </form>
+      <button mat-raised-button color="primary" class="icon-btn">
+        <mat-icon>tune</mat-icon>
+      </button>
+    </div>
+    <div class="login">
+      <span class="login-name">Your Name</span>
+      <button mat-raised-button color="primary" class="icon-btn">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</header>
