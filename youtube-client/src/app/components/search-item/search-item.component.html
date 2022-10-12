@@ -1,1 +1,26 @@
-<p>search-item works!</p>
+<mat-card class="card" *ngIf="item">
+  <img mat-card-image [src]=" item.snippet.thumbnails.default.url" alt="Card image">
+  <div class="statistics">
+    <div class="statistics-item">
+      <mat-icon>visibility</mat-icon>
+      {{item.statistics.viewCount}}
+    </div>
+    <div class="statistics-item">
+      <mat-icon>thumb_up_alt</mat-icon>
+      {{item.statistics.likeCount}}
+    </div>
+    <div class="statistics-item">
+      <mat-icon>thumb_down_alt</mat-icon>
+      {{item.statistics.likeCount}}
+    </div>
+    <div class="statistics-item">
+      <mat-icon>comment</mat-icon>
+      {{item.statistics.commentCount}}
+    </div>
+  </div>
+  <mat-card-title class="card-title" title="{{item.snippet.title}} #{{item.id}}">{{item.snippet.title}} #{{item.id}}
+  </mat-card-title>
+  <mat-card-actions>
+    <button type="button" mat-raised-button color="primary" class="card-btn">more...</button>
+  </mat-card-actions>
+</mat-card>

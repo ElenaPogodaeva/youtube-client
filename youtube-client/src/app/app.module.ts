@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, SearchResultsComponent, SearchItemComponent],
@@ -22,6 +23,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatIconModule,
     MatToolbarModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,41 @@
+.card {
+  background-color: #E5E5E5;
+}
+.card-title {
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  color: #4F4F4F;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 60px;
+}
+.card-btn {
+  width: 150px;
+}
+.statistics {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.statistics-item {
+  font-size: 10px;
+  line-height: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px;
+}
+.mat-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mat-card>.mat-card-actions:last-child {
+  padding-bottom: 8px;
+}
