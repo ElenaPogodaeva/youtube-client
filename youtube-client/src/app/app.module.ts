@@ -12,9 +12,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import { FilterPipe } from './pipes/filter/filter.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, SearchResultsComponent, SearchItemComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    SearchResultsComponent,
+    SearchItemComponent,
+    FilterPipe,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +32,7 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatToolbarModule,
     MatCardModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

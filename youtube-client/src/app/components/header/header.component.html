@@ -5,12 +5,12 @@
       <div mat-raised-button color="primary" class="logo">
         <mat-icon class="logo-icon">play_arrow</mat-icon>
       </div>
-      <form class="search-form">
+      <form class="search-form" (ngSubmit)="searchVideos()">
         <mat-form-field appearance="fill" class="search-field">
           <mat-label>Search</mat-label>
-          <input matInput type="search" class="search-input">
+          <input type="search" [(ngModel)]="searchTerm" (keyup.enter)="searchVideos()" matInput class="search-input" name="search">
         </mat-form-field>
-        <button type="button" mat-raised-button color="primary" class="search-btn">
+        <button type="submit" mat-raised-button color="primary" class="search-btn">
           Search
         </button>
       </form>

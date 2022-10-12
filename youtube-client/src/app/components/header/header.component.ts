@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   searchTerm: string = '';
+
+  @Output() search = new EventEmitter<string>();
+
+  searchVideos() {
+    if (this.searchTerm) {
+      this.search.emit(this.searchTerm);
+    }
+  }
 }
