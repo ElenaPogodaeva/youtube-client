@@ -2,8 +2,8 @@
   <div class="container">
     <span>Sorting by:</span>
     <div class="sorting">
-      <button mat-flat-button class="sort-btn">date</button>
-      <button mat-flat-button class="sort-btn">count of views</button>
+      <button mat-flat-button class="sort-btn" (click)="sortBy('date')">date</button>
+      <button mat-flat-button class="sort-btn" (click)="sortBy('views')">count of views</button>
       <span class="sort-text">by word or sentance</span>
       <mat-form-field appearance="fill">
         <input matInput type="text" name="filter">

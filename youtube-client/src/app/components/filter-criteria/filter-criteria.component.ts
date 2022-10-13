@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-filter-criteria',
@@ -7,4 +7,16 @@ import { Component, Input } from '@angular/core';
 })
 export class FilterCriteriaComponent {
   @Input() isOpen!: boolean;
+
+  sortField: string = '';
+
+  sortReverse: boolean = false;
+
+  @Output() sorting = new EventEmitter<{ sortField: string; sortReverse: boolean }>();
+
+  sortBy(sortField: string) {
+    this.sortReverse = this.sortField === sortField ? !this.sortReverse : false;
+    this.sortField = sortField;
+    this.sorting.emit({ sortField: this.sortField, sortReverse: this.sortReverse });
+  }
 }
