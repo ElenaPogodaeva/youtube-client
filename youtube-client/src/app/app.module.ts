@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FilterPipe } from './pipes/filter/filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { FilterCriteriaComponent } from './components/filter-criteria/filter-criteria.component';
+import { SortPipe } from './pipes/sort/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FilterCriteriaComponent } from './components/filter-criteria/filter-cri
     SearchItemComponent,
     FilterPipe,
     FilterCriteriaComponent,
+    SortPipe,
   ],
   imports: [
     BrowserModule,

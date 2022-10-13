@@ -16,6 +16,10 @@ export class SearchResultsComponent implements OnChanges {
 
   @Input() searchTerm: string = '';
 
+  @Input() sortField: string = '';
+
+  @Input() sortReverse: boolean = false;
+
   ngOnChanges() {
     if (this.searchTerm) this.items = responseMock.items;
   }
