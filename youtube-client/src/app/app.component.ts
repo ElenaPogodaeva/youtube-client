@@ -10,6 +10,8 @@ export class AppComponent {
 
   searchTerm = '';
 
+  filterState: boolean = false;
+
   search(str: string) {
     this.searchTerm = str;
   }

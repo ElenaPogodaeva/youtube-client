@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-filter-criteria',
   templateUrl: './filter-criteria.component.html',
-  styleUrls: ['./filter-criteria.component.scss']
+  styleUrls: ['./filter-criteria.component.scss'],
 })
 export class FilterCriteriaComponent implements OnInit {
+  @Input() isOpen!: boolean;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -1,4 +1,4 @@
-<app-header (search)="search($event)"></app-header>
-<app-filter-criteria></app-filter-criteria>
+<app-header (search)="search($event)" [(isOpen)] = "filterState"></app-header>
+<app-filter-criteria [isOpen] = "filterState"></app-filter-criteria>
 <app-search-results [searchTerm]="searchTerm"></app-search-results>
 <router-outlet></router-outlet>

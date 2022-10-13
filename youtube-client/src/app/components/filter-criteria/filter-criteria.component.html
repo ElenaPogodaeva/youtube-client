@@ -1,12 +1,12 @@
-<div class="filtering">
+<div class="filtering" *ngIf="isOpen">
   <div class="container">
     <span>Sorting by:</span>
     <div class="sorting">
-      <button mat-flat-button class="sort-btn sort-by-date">date</button>
-      <button mat-flat-button class="sort-btn sort-by-views">count of views</button>
+      <button mat-flat-button class="sort-btn">date</button>
+      <button mat-flat-button class="sort-btn">count of views</button>
       <span class="sort-text">by word or sentance</span>
-      <mat-form-field appearance="fill" class="search-field">
-        <input matInput type="text" class="filter-input" name="filter">
+      <mat-form-field appearance="fill">
+        <input matInput type="text" name="filter">
       </mat-form-field>
     </div>
   </div>
