@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import type { OnChanges } from '@angular/core';
 import { SearchResponseModel } from '../../models/search-response.model';
 import { SearchItemModel } from '../../models/search-item.model';
 import { responseMock } from '../../mocks/response.mock';
