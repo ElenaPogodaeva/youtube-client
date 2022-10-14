@@ -24,4 +24,9 @@ export class AppComponent {
     this.sortField = sortField;
     this.sortReverse = sortReverse;
   }
+
+  filterByWord(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.searchTerm = target.value;
+  }
 }

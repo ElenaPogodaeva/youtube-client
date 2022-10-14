@@ -14,6 +14,8 @@ export class FilterCriteriaComponent {
 
   @Output() sorting = new EventEmitter<{ sortField: string; sortReverse: boolean }>();
 
+  @Output() filterByWord = new EventEmitter<Event>();
+
   sortBy(sortField: string) {
     this.sortReverse = this.sortField === sortField ? !this.sortReverse : false;
     this.sortField = sortField;

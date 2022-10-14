@@ -6,7 +6,7 @@
       <button mat-flat-button class="sort-btn" (click)="sortBy('views')">count of views</button>
       <span class="sort-text">by word or sentance</span>
       <mat-form-field appearance="fill">
-        <input matInput type="text" name="filter">
+        <input matInput type="text" name="filter" (input)="filterByWord.emit($event)">
       </mat-form-field>
     </div>
   </div>

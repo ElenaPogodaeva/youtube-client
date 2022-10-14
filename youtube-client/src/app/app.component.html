@@ -1,4 +1,4 @@
 <app-header (search)="search($event)" [(isOpen)] = "filterState"></app-header>
-<app-filter-criteria [isOpen] = "filterState" (sorting)="sorting($event)"></app-filter-criteria>
+<app-filter-criteria [isOpen] = "filterState" (sorting)="sorting($event)" (filterByWord)="filterByWord($event)"></app-filter-criteria>
 <app-search-results [searchTerm]="searchTerm" [sortField]="sortField" [sortReverse]="sortReverse"></app-search-results>
 <router-outlet></router-outlet>
