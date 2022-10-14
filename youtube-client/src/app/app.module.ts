@@ -16,6 +16,7 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { FilterCriteriaComponent } from './components/filter-criteria/filter-criteria.component';
 import { SortPipe } from './pipes/sort/sort.pipe';
+import { BorderColorDirective } from './directives/border-color/border-color.directive';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SortPipe } from './pipes/sort/sort.pipe';
     FilterPipe,
     FilterCriteriaComponent,
     SortPipe,
+    BorderColorDirective,
   ],
   imports: [
     BrowserModule,

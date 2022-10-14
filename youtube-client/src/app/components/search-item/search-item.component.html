@@ -1,5 +1,5 @@
-<mat-card class="card" *ngIf="item">
-  <img mat-card-image [src]=" item.snippet.thumbnails.default.url" alt="Card image">
+<mat-card class="card" *ngIf="item" [appBorderColor]="item.snippet.publishedAt">
+  <img mat-card-image [src]="item.snippet.thumbnails.default.url" alt="Card image">
   <div class="statistics">
     <div class="statistics-item">
       <mat-icon>visibility</mat-icon>
