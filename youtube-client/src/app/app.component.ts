@@ -12,17 +12,8 @@ export class AppComponent {
 
   filterState: boolean = false;
 
-  sortField = '';
-
-  sortReverse: boolean = false;
-
   search(str: string) {
     this.searchTerm = str;
-  }
-
-  sorting({ sortField, sortReverse }: { sortField: string; sortReverse: boolean }) {
-    this.sortField = sortField;
-    this.sortReverse = sortReverse;
   }
 
   filterByWord(event: Event) {

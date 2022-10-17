@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import type { OnChanges } from '@angular/core';
-import { SearchResponseModel } from '../../models/search-response.model';
-import { SearchItemModel } from '../../models/search-item.model';
-import { responseMock } from '../../mocks/response.mock';
+import { SearchResponseModel } from '../../../shared/models/search-response.model';
+import { SearchItemModel } from '../../../shared/models/search-item.model';
+import { responseMock } from '../../../shared/mocks/response.mock';
 
 @Component({
   selector: 'app-search-results',
