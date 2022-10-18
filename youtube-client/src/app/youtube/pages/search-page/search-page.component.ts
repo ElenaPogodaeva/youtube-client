@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
   selector: 'app-search-page',
@@ -6,18 +7,34 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./search-page.component.scss'],
 })
 export class SearchPageComponent {
-  @Input() isOpen!: boolean;
+  constructor(private youtubeService: YoutubeService) {}
 
-  @Input() searchTerm!: string;
+  getItems() {
+    return this.youtubeService.searchItems;
+  }
 
-  sortField = '';
+  getFilterState() {
+    return this.youtubeService.filterState;
+  }
 
-  sortReverse: boolean = false;
+  getSearchTerm() {
+    return this.youtubeService.searchTerm;
+  }
 
-  @Output() filterByWord = new EventEmitter<Event>();
+  getSortField() {
+    return this.youtubeService.sortField;
+  }
+
+  getSortReverse() {
+    return this.youtubeService.sortReverse;
+  }
 
   sorting({ sortField, sortReverse }: { sortField: string; sortReverse: boolean }) {
-    this.sortField = sortField;
-    this.sortReverse = sortReverse;
+    this.youtubeService.setSortOptions(sortField, sortReverse);
+  }
+
+  filterByWord(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.youtubeService.setSearchTerm(target.value);
   }
 }

@@ -1,3 +1,3 @@
-<app-filter-criteria [isOpen] = "isOpen" (sorting)="sorting($event)" (filterByWord)="filterByWord.emit($event)"></app-filter-criteria>
-<app-search-results [searchTerm]="searchTerm" [sortField]="sortField" [sortReverse]="sortReverse"></app-search-results>
+<app-filter-criteria [isOpen]="getFilterState()" (sorting)="sorting($event)" (filterByWord)="filterByWord($event)"></app-filter-criteria>
+<app-search-results [items]="getItems()" [searchTerm]="getSearchTerm()" [sortField]="getSortField()" [sortReverse]="getSortReverse()"></app-search-results>
 

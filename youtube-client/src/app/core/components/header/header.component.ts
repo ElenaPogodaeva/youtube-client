@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { YoutubeService } from '../../../youtube/services/youtube.service';
 
 @Component({
   selector: 'app-header',
@@ -8,20 +9,15 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class HeaderComponent {
   searchTerm: string = '';
 
-  @Output() search = new EventEmitter<string>();
-
-  @Input() isOpen!: boolean;
-
-  @Output() isOpenChange = new EventEmitter<boolean>();
+  constructor(private youtubeService: YoutubeService) {}
 
   searchVideos() {
-    if (this.searchTerm) {
-      this.search.emit(this.searchTerm);
-    }
+    this.youtubeService.setSearchTerm(this.searchTerm);
+
+    this.youtubeService.search();
   }
 
   toggleFilters() {
-    this.isOpen = !this.isOpen;
-    this.isOpenChange.emit(this.isOpen);
+    this.youtubeService.toggleFilters();
   }
 }

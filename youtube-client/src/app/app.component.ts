@@ -7,17 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'youtube-client';
-
-  searchTerm = '';
-
-  filterState: boolean = false;
-
-  search(str: string) {
-    this.searchTerm = str;
-  }
-
-  filterByWord(event: Event) {
-    const target = event.target as HTMLInputElement;
-    this.searchTerm = target.value;
-  }
 }
