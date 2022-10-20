@@ -7,6 +7,7 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
 import { FilterCriteriaComponent } from './components/filter-criteria/filter-criteria.component';
 import { SharedModule } from '../shared/shared.module';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
+import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
     SearchItemComponent,
     FilterCriteriaComponent,
     SearchPageComponent,
+    DetailedPageComponent,
   ],
   imports: [CommonModule, YoutubeRoutingModule, SharedModule],
   exports: [
@@ -21,6 +23,7 @@ import { SearchPageComponent } from './pages/search-page/search-page.component';
     SearchItemComponent,
     FilterCriteriaComponent,
     SearchPageComponent,
+    DetailedPageComponent
   ],
 })
 export class YoutubeModule {}
