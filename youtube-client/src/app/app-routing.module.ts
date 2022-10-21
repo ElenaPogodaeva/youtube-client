@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import type { Routes } from '@angular/router';
-import { SearchPageComponent } from './youtube/pages/search-page/search-page.component';
 
 const routes: Routes = [
   {
@@ -13,9 +12,13 @@ const routes: Routes = [
     redirectTo: 'youtube',
     pathMatch: 'full',
   },
+  {
+    path: 'sign-in',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+  },
   // {
   //   path: '**',
-  //   component: SearchPageComponent,
+  //   component: NotFoundPageComponent,
   // },
 ];
 
