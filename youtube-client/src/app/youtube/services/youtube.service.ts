@@ -16,6 +16,8 @@ export class YoutubeService {
 
   sortReverse: boolean = false;
 
+  selectedItem: SearchItemModel | undefined;
+
   getItems(): SearchItemModel[] {
     return responseMock.items;
   }
@@ -37,5 +39,9 @@ export class YoutubeService {
 
   toggleFilters() {
     this.filterState = !this.filterState;
+  }
+
+  selectItem(id: string) {
+    this.selectedItem = this.searchItems.find(item => item.id === id);
   }
 }

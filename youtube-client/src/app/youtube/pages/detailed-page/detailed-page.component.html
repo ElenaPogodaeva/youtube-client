@@ -1,33 +1,35 @@
-<div class="container">
-  <button mat-raised-button color="primary" class="icon-btn">
+<div class="container" *ngIf="selectedItem">
+  <button mat-raised-button color="primary" class="icon-btn" (click)="onBack()">
     <mat-icon>arrow_back</mat-icon>
   </button>
   <mat-card class="card">
-    <img class="card-img" src="https://i.ytimg.com/vi/YN8zNnV0sK8/default.jpg">
+    <div class="card-img">
+      <img mat-card-image [src]="selectedItem.snippet.thumbnails.default.url">
+    </div>
     <div class="card-content">
       <div class="card-header">
-        <mat-card-title>Title</mat-card-title>
-        <mat-card-subtitle>Date</mat-card-subtitle>
+        <mat-card-title>{{selectedItem.snippet.title}}</mat-card-title>
+        <mat-card-subtitle>{{selectedItem.snippet.publishedAt | date: "fullDate"}}</mat-card-subtitle>
       </div>
       <mat-card-content>
         <h3>Description:</h3>
-        <p class="card-description">description</p>
+        <p class="card-description">{{selectedItem.snippet.description}}</p>
         <div class="statistics">
           <div class="statistics-item">
             <mat-icon>visibility</mat-icon>
-            1111
+            {{selectedItem.statistics.viewCount}}
           </div>
           <div class="statistics-item">
             <mat-icon>thumb_up_alt</mat-icon>
-            11111
+            {{selectedItem.statistics.likeCount}}
           </div>
           <div class="statistics-item">
             <mat-icon>thumb_down_alt</mat-icon>
-            1111
+            {{selectedItem.statistics.dislikeCount}}
           </div>
           <div class="statistics-item">
             <mat-icon>comment</mat-icon>
-            1111
+            {{selectedItem.statistics.commentCount}}
           </div>
         </div>
       </mat-card-content>

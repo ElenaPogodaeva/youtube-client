@@ -11,7 +11,7 @@
     </div>
     <div class="statistics-item">
       <mat-icon>thumb_down_alt</mat-icon>
-      {{item.statistics.likeCount}}
+      {{item.statistics.dislikeCount}}
     </div>
     <div class="statistics-item">
       <mat-icon>comment</mat-icon>
@@ -21,6 +21,6 @@
   <mat-card-title class="card-title" title="{{item.snippet.title}} #{{item.id}}">{{item.snippet.title}} #{{item.id}}
   </mat-card-title>
   <mat-card-actions>
-    <button type="button" mat-raised-button color="primary" class="card-btn">more...</button>
+    <button type="button" mat-raised-button color="primary" class="card-btn" (click)="onSelect(item)">more...</button>
   </mat-card-actions>
 </mat-card>

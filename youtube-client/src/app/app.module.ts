@@ -9,7 +9,7 @@ import { YoutubeModule } from './youtube/youtube.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, CoreModule, YoutubeModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, CoreModule],
   providers: [],
   bootstrap: [AppComponent],
 })
