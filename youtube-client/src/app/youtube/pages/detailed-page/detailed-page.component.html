@@ -6,7 +6,7 @@
     <div class="card-img">
       <img mat-card-image [src]="selectedItem.snippet.thumbnails.default.url">
     </div>
-    <div class="card-content">
+    <div class="card-content" [appBorderColor]="selectedItem.snippet.publishedAt">
       <div class="card-header">
         <mat-card-title>{{selectedItem.snippet.title}}</mat-card-title>
         <mat-card-subtitle>{{selectedItem.snippet.publishedAt | date: "fullDate"}}</mat-card-subtitle>
