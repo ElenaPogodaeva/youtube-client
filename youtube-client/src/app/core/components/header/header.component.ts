@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { YoutubeService } from '../../../youtube/services/youtube.service';
 export class HeaderComponent {
   searchTerm: string = '';
 
-  constructor(private youtubeService: YoutubeService) {}
+  constructor(private youtubeService: YoutubeService, private authService: AuthService,) {}
 
   searchVideos() {
     this.youtubeService.setSearchTerm(this.searchTerm);
@@ -19,5 +20,9 @@ export class HeaderComponent {
 
   toggleFilters() {
     this.youtubeService.toggleFilters();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }
