@@ -9,7 +9,7 @@ const routes: Routes = [
     path: 'youtube',
     loadChildren: () => import('./youtube/youtube.module').then((m) => m.YoutubeModule),
     canActivate: [AuthGuard],
-    canLoad:[AuthGuard],
+    canLoad: [AuthGuard],
   },
   {
     path: '',
@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: '**',

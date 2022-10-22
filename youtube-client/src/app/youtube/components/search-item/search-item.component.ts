@@ -11,7 +11,7 @@ import { YoutubeService } from '../../services/youtube.service';
 export class SearchItemComponent {
   @Input() item?: SearchItemModel;
 
-  constructor(private router: Router, private youtubeService: YoutubeService) { }
+  constructor(private router: Router, private youtubeService: YoutubeService) {}
 
   onSelect(item: SearchItemModel) {
     this.youtubeService.selectItem(item.id);

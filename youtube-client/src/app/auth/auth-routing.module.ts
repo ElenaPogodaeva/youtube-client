@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: 'sign-in',
     component: SignInPageComponent,
-  }
+  },
 ];
 
 @NgModule({

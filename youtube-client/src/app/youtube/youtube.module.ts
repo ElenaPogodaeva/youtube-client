@@ -23,7 +23,7 @@ import { DetailedPageComponent } from './pages/detailed-page/detailed-page.compo
     SearchItemComponent,
     FilterCriteriaComponent,
     SearchPageComponent,
-    DetailedPageComponent
+    DetailedPageComponent,
   ],
 })
 export class YoutubeModule {}

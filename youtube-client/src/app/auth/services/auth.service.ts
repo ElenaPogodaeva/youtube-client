@@ -2,18 +2,17 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor(private router: Router) {}
 
-  constructor(private router: Router) { }
-
-  login (token: string) {
+  login(token: string) {
     localStorage.setItem('token', token);
     this.router.navigate(['/', 'youtube']);
   }
 
-  logout () {
+  logout() {
     localStorage.clear();
     this.router.navigate(['/', 'auth', 'sign-in']);
   }

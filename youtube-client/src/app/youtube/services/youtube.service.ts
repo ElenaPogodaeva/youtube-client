@@ -42,6 +42,6 @@ export class YoutubeService {
   }
 
   selectItem(id: string) {
-    this.selectedItem = this.searchItems.find(item => item.id === id);
+    this.selectedItem = this.searchItems.find((item) => item.id === id);
   }
 }
