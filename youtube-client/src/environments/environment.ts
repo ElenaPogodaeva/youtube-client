@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  BASE_URL: 'https://www.googleapis.com/youtube/v3/',
+  API_KEY: 'AIzaSyAfO2wLbatiQKo9F9rn4pSE9mLonyyTbc0',
 };
 
 /*
