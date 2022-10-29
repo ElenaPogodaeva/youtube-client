@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { VideoItemModel } from 'src/app/shared/models/video-item.model';
 import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class SearchPageComponent {
   constructor(private youtubeService: YoutubeService) {}
 
   getItems() {
-    return this.youtubeService.searchItems;
+    return this.youtubeService.videos;
   }
 
   getFilterState() {

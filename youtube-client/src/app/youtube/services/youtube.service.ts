@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import { SearchItemModel } from '../../shared/models/search-item.model';
-import { responseMock } from '../../shared/mocks/response.mock';
+import { map, switchMap } from 'rxjs';
+import { ApiService } from '../../../app/core/services/api.service';
+import { SearchResponseModel } from 'src/app/shared/models/search-response.model';
+import { VideoItemModel } from 'src/app/shared/models/video-item.model';
+import { VideoResponseModel } from 'src/app/shared/models/video-response.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class YoutubeService {
   searchItems: SearchItemModel[] = [];
+
+  videos: VideoItemModel[] = [];
 
   filterState: boolean = false;
 
@@ -16,10 +22,27 @@ export class YoutubeService {
 
   sortReverse: boolean = false;
 
-  selectedItem: SearchItemModel | undefined;
+  selectedItem: VideoItemModel | undefined;
 
-  getItems(): SearchItemModel[] {
-    return responseMock.items;
+  constructor(private apiService: ApiService) {}
+
+  getVideos(): VideoItemModel[] {
+    return this.videos;
+  }
+
+  fetchVideos(searchTerm: string) {
+    this.apiService
+      .getVideosByWord(searchTerm)
+      .pipe(
+        map((response: SearchResponseModel) => response.items),
+        switchMap((items: SearchItemModel[]) => {
+          const ids = items.map((item) => item.id.videoId).join(',');
+          return this.apiService
+            .getVideosByIds(ids)
+            .pipe(map((videoResponse: VideoResponseModel) => videoResponse.items));
+        }),
+      )
+      .subscribe((data) => (this.videos = data));
   }
 
   setSearchTerm(searchTerm: string) {
@@ -28,7 +51,7 @@ export class YoutubeService {
 
   search() {
     if (this.searchTerm) {
-      this.searchItems = responseMock.items;
+      //this.searchItems = responseMock.items;
     }
   }
 
@@ -42,6 +65,6 @@ export class YoutubeService {
   }
 
   selectItem(id: string) {
-    this.selectedItem = this.searchItems.find((item) => item.id === id);
+    this.selectedItem = this.videos.find((item) => item.id === id);
   }
 }
