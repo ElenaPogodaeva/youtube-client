@@ -10,8 +10,6 @@ import { VideoResponseModel } from 'src/app/shared/models/video-response.model';
   providedIn: 'root',
 })
 export class YoutubeService {
-  searchItems: SearchItemModel[] = [];
-
   videos: VideoItemModel[] = [];
 
   filterState: boolean = false;
@@ -47,12 +45,6 @@ export class YoutubeService {
 
   setSearchTerm(searchTerm: string) {
     this.searchTerm = searchTerm;
-  }
-
-  search() {
-    if (this.searchTerm) {
-      //this.searchItems = responseMock.items;
-    }
   }
 
   setSortOptions(sortField: string, sortReverse: boolean) {

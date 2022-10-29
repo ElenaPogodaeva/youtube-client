@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { debounceTime, distinctUntilChanged, filter, fromEvent, map } from 'rxjs';
 import { AuthService } from '../../../auth/services/auth.service';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
 
@@ -10,13 +11,11 @@ import { YoutubeService } from '../../../youtube/services/youtube.service';
 export class HeaderComponent {
   searchTerm: string = '';
 
+  @ViewChild('input') inputElement!: ElementRef<HTMLInputElement>;
+
+  @Output() search: EventEmitter<string> = new EventEmitter<string>();
+
   constructor(private youtubeService: YoutubeService, private authService: AuthService) {}
-
-  searchVideos() {
-    this.youtubeService.setSearchTerm(this.searchTerm);
-
-    this.youtubeService.search();
-  }
 
   toggleFilters() {
     this.youtubeService.toggleFilters();
@@ -24,5 +23,20 @@ export class HeaderComponent {
 
   logout() {
     this.authService.logout();
+  }
+
+  ngAfterViewInit() {
+    fromEvent(this.inputElement.nativeElement, 'input')
+      .pipe(
+        map((e: Event) => {
+          return (e.target as HTMLInputElement).value;
+        }),
+        distinctUntilChanged(),
+        filter((value: string) => value.length > 3),
+        debounceTime(500),
+      )
+      .subscribe((value) => {
+        this.youtubeService.fetchVideos(value);
+      });
   }
 }
