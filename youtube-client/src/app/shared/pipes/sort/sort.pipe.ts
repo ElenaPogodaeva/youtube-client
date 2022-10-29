@@ -1,6 +1,6 @@
 import { Pipe } from '@angular/core';
 import type { PipeTransform } from '@angular/core';
-import { SearchItemModel } from '../../models/search-item.model';
+import { VideoItemModel } from '../../models/video-item.model';
 
 function compare(a: number, b: number, reverse: boolean) {
   return (a < b ? -1 : 1) * (reverse ? 1 : -1);
@@ -10,7 +10,7 @@ function compare(a: number, b: number, reverse: boolean) {
   name: 'sort',
 })
 export class SortPipe implements PipeTransform {
-  transform(value: SearchItemModel[], sortField: string, sortReverse: boolean): SearchItemModel[] {
+  transform(value: VideoItemModel[], sortField: string, sortReverse: boolean): VideoItemModel[] {
     if (!value || !value.length || !sortField) return value;
 
     return value.sort((a, b) => {
