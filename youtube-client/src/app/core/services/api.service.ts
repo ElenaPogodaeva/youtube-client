@@ -17,7 +17,7 @@ export class ApiService {
       .set('maxResults', 25)
       .set('q', query)
       .set('key', environment.API_KEY);
-    return this.http.get<SearchResponseModel>('https://www.googleapis.com/youtube/v3/search', {
+    return this.http.get<SearchResponseModel>('search', {
       params,
     });
   }
@@ -27,7 +27,7 @@ export class ApiService {
       .set('part', 'snippet, statistics')
       .set('id', ids)
       .set('key', environment.API_KEY);
-    return this.http.get<VideoResponseModel>('https://www.googleapis.com/youtube/v3/videos', {
+    return this.http.get<VideoResponseModel>('videos', {
       params,
     });
   }
