@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { VideoItemModel } from 'src/app/shared/models/video-item.model';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { YoutubeService } from '../../services/youtube.service';
 
 @Component({
@@ -8,7 +8,9 @@ import { YoutubeService } from '../../services/youtube.service';
   styleUrls: ['./search-page.component.scss'],
 })
 export class SearchPageComponent {
-  constructor(private youtubeService: YoutubeService) {}
+  constructor(private youtubeService: YoutubeService, private loadingService: LoadingService) {}
+
+  loading$ = this.loadingService.loading$;
 
   getItems() {
     return this.youtubeService.videos;

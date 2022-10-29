@@ -1,15 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { LoadingService } from '../services/loading.service';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
+  constructor(private loadingService: LoadingService) {}
+
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(
-      request.clone({
-        url: environment.BASE_URL + request.url,
-      }),
-    );
+    this.loadingService.showLoader();
+    return next
+      .handle(
+        request.clone({
+          url: environment.BASE_URL + request.url,
+        }),
+      )
+      .pipe(
+        finalize(() => {
+          this.loadingService.hideLoader();
+        }),
+      );
   }
 }
