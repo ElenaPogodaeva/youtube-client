@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { HttpRequest, HttpHandler } from '@angular/common/http';
+import type { HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { finalize, Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 import { LoadingService } from '../services/loading.service';
 
 @Injectable()

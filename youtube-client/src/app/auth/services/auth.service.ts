@@ -9,7 +9,7 @@ export class AuthService {
 
   login(token: string) {
     localStorage.setItem('token', token);
-    this.router.navigate(['/', 'youtube']);
+    this.router.navigate(['/', 'search']);
   }
 
   logout() {

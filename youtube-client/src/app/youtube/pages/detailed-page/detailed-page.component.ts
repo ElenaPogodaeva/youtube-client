@@ -13,6 +13,6 @@ export class DetailedPageComponent {
   constructor(private router: Router, private youtubeService: YoutubeService) {}
 
   onBack() {
-    this.router.navigate(['/', 'youtube']);
+    this.router.navigate(['/', 'search']);
   }
 }

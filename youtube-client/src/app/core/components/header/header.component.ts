@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import type { AfterViewInit } from '@angular/core';
 import { debounceTime, distinctUntilChanged, filter, fromEvent, map } from 'rxjs';
 import { AuthService } from '../../../auth/services/auth.service';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
@@ -8,7 +9,7 @@ import { YoutubeService } from '../../../youtube/services/youtube.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements AfterViewInit {
   searchTerm: string = '';
 
   @ViewChild('input') inputElement!: ElementRef<HTMLInputElement>;

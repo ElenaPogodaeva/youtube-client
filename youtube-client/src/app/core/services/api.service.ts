@@ -1,9 +1,9 @@
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SearchResponseModel } from 'src/app/shared/models/search-response.model';
-import { environment } from 'src/environments/environment';
-import { VideoResponseModel } from 'src/app/shared/models/video-response.model';
+import { SearchResponseModel } from '../../../app/shared/models/search-response.model';
+import { environment } from '../../../environments/environment';
+import { VideoResponseModel } from '../../../app/shared/models/video-response.model';
 
 @Injectable({
   providedIn: 'root',

@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { SearchItemModel } from '../../shared/models/search-item.model';
 import { map, switchMap } from 'rxjs';
 import { ApiService } from '../../../app/core/services/api.service';
-import { SearchResponseModel } from 'src/app/shared/models/search-response.model';
-import { VideoItemModel } from 'src/app/shared/models/video-item.model';
-import { VideoResponseModel } from 'src/app/shared/models/video-response.model';
+import { SearchResponseModel } from '../../../app/shared/models/search-response.model';
+import { VideoItemModel } from '../../../app/shared/models/video-item.model';
+import { VideoResponseModel } from '../../../app/shared/models/video-response.model';
 
 @Injectable({
   providedIn: 'root',
