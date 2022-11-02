@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
-import type { AfterViewInit } from '@angular/core';
-import { debounceTime, distinctUntilChanged, filter, fromEvent, map } from 'rxjs';
+import type { AfterViewInit, OnInit } from '@angular/core';
+import { debounceTime, distinctUntilChanged, filter, fromEvent, map, Observable } from 'rxjs';
 import { AuthService } from '../../../auth/services/auth.service';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
 
@@ -9,14 +9,20 @@ import { YoutubeService } from '../../../youtube/services/youtube.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
   searchTerm: string = '';
+
+  isAuth$!: Observable<boolean>;
 
   @ViewChild('input') inputElement!: ElementRef<HTMLInputElement>;
 
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private youtubeService: YoutubeService, private authService: AuthService) {}
+
+  ngOnInit() {
+    this.isAuth$ = this.authService.getAuth();
+  }
 
   toggleFilters() {
     this.youtubeService.toggleFilters();

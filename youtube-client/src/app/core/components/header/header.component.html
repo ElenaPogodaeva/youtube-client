@@ -13,7 +13,7 @@
         <mat-icon>tune</mat-icon>
       </button>
     </div>
-    <div class="login">
+    <div class="login" *ngIf="(isAuth$ | async);else notAuth">
       <span class="login-name">Your Name</span>
       <button mat-raised-button color="primary" class="icon-btn">
         <mat-icon>account_circle</mat-icon>
@@ -22,5 +22,10 @@
         <mat-icon>exit_to_app</mat-icon>
       </button>
     </div>
+    <ng-template #notAuth>
+      <button routerLink="/auth/sign-in" mat-raised-button color="primary">
+        Login
+      </button>
+    </ng-template>
   </mat-toolbar>
 </header>
