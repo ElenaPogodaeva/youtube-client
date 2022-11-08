@@ -1,0 +1,13 @@
+<form class="form" [formGroup]="loginForm" (submit)="loginForm.valid && submit()">
+  <mat-form-field appearance="fill">
+    <mat-label>login</mat-label>
+    <input matInput type="email" formControlName="login">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>password</mat-label>
+    <input matInput type="password" formControlName="password">
+  </mat-form-field>
+    <button type="sumbit" mat-raised-button color="primary" class="login-btn">
+      Login
+    </button>
+</form>
