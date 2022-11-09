@@ -1,13 +1,34 @@
 <form class="form" [formGroup]="loginForm" (submit)="loginForm.valid && submit()">
   <mat-form-field appearance="fill">
     <mat-label>login</mat-label>
-    <input matInput type="email" formControlName="login">
+    <input matInput type="email" formControlName="login" required>
+    <mat-error *ngIf="login?.invalid && (login?.dirty || login?.touched)">
+      <span *ngIf="login?.errors?.['required']">
+        Please enter a login email.
+      </span>
+      <span *ngIf="login?.errors?.['email']">
+        The login email is invalid.
+      </span>
+    </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>password</mat-label>
-    <input matInput type="password" formControlName="password">
-  </mat-form-field>
-    <button type="sumbit" mat-raised-button color="primary" class="login-btn">
-      Login
+    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
+    <mat-error *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+      <span *ngIf="password?.errors?.['required']">
+        Please enter a password.
+      </span>
+      <span *ngIf="password?.errors?.['passwordStrength']">
+        Your password isn't strong enough:
+        {{password?.errors?.['passwordStrength']}}
+      </span>
+    </mat-error>
+  </mat-form-field>
+  <button type="sumbit" mat-raised-button color="primary" class="login-btn" [disabled]="!loginForm.valid">
+    Login
+  </button>
 </form>
