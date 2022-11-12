@@ -57,6 +57,9 @@
       <span *ngIf="creationDate?.errors?.['required']">
         Please enter a creation date.
       </span>
+      <span *ngIf="creationDate?.errors?.['notValidDate']">
+        The date is invalid.
+      </span>
     </mat-error>
   </mat-form-field>
   <button type="sumbit" mat-raised-button color="primary" class="create-btn" [disabled]="!cardForm.valid">

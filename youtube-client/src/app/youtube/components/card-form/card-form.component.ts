@@ -21,7 +21,7 @@ export class CardFormComponent implements OnInit {
       description: ['', [Validators.maxLength(255)]],
       imgLink: ['', [Validators.required, Validators.pattern(reg)]],
       videoLink: ['', [Validators.required, Validators.pattern(reg)]],
-      creationDate: ['', [Validators.required]],
+      creationDate: ['', [Validators.required, this.validationService.dateValidator()]],
     });
   }
 

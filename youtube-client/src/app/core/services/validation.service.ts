@@ -41,4 +41,21 @@ export class ValidationService {
       return null;
     };
   }
+
+  dateValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+
+      if (!value) {
+        return null;
+      }
+
+      const currentDate = new Date().getTime();
+      const enteredDate = control.value.getTime();
+
+      const dateValid = currentDate > enteredDate;
+
+      return !dateValid ? { notValidDate: true } : null;
+    };
+  }
 }
