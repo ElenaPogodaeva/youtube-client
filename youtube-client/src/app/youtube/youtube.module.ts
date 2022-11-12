@@ -8,6 +8,9 @@ import { FilterCriteriaComponent } from './components/filter-criteria/filter-cri
 import { SharedModule } from '../shared/shared.module';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component';
+import { CardFormComponent } from './components/card-form/card-form.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,14 +19,17 @@ import { DetailedPageComponent } from './pages/detailed-page/detailed-page.compo
     FilterCriteriaComponent,
     SearchPageComponent,
     DetailedPageComponent,
+    CardFormComponent,
+    AdminPageComponent,
   ],
-  imports: [CommonModule, YoutubeRoutingModule, SharedModule],
+  imports: [CommonModule, YoutubeRoutingModule, SharedModule, ReactiveFormsModule],
   exports: [
     SearchResultsComponent,
     SearchItemComponent,
     FilterCriteriaComponent,
     SearchPageComponent,
     DetailedPageComponent,
+    AdminPageComponent,
   ],
 })
 export class YoutubeModule {}
