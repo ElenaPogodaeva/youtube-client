@@ -9,6 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const materialModules = [
   MatButtonModule,
@@ -17,6 +19,8 @@ const materialModules = [
   MatIconModule,
   MatCardModule,
   MatProgressSpinnerModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ];
 
 @NgModule({

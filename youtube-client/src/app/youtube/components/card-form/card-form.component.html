@@ -1,0 +1,48 @@
+<form class="form" [formGroup]="cardForm" (submit)="cardForm.valid && submit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" required>
+    <mat-error *ngIf="title?.invalid && (title?.dirty || title?.touched)">
+      <span *ngIf="title?.errors?.['required']">
+        Please enter a title.
+      </span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Img</mat-label>
+    <input matInput formControlName="imgLink" required>
+    <mat-error *ngIf="imgLink?.invalid && (imgLink?.dirty || imgLink?.touched)">
+      <span *ngIf="imgLink?.errors?.['required']">
+        Please enter a link to the image.
+      </span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Link video</mat-label>
+    <input matInput formControlName="videoLink" required>
+    <mat-error *ngIf="videoLink?.invalid && (videoLink?.dirty || videoLink?.touched)">
+      <span *ngIf="videoLink?.errors?.['required']">
+        Please enter a link to the video.
+      </span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="creationDate">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="creationDate?.invalid && (creationDate?.dirty || creationDate?.touched)">
+      <span *ngIf="creationDate?.errors?.['required']">
+        Please enter a creation date.
+      </span>
+    </mat-error>
+  </mat-form-field>
+  <button type="sumbit" mat-raised-button color="primary" class="create-btn" [disabled]="!cardForm.valid">
+    Create card
+  </button>
+</form>
