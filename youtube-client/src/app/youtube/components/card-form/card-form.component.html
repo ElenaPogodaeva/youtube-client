@@ -6,11 +6,22 @@
       <span *ngIf="title?.errors?.['required']">
         Please enter a title.
       </span>
+      <span *ngIf="title?.errors?.['minlength']">
+        The title is too short.
+      </span>
+      <span *ngIf="title?.errors?.['maxlength']">
+        The title is too long.
+      </span>
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Description</mat-label>
     <input matInput formControlName="description">
+    <mat-error *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+      <span *ngIf="description?.errors?.['maxlength']">
+        The description is too long.
+      </span>
+    </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Img</mat-label>
@@ -18,6 +29,9 @@
     <mat-error *ngIf="imgLink?.invalid && (imgLink?.dirty || imgLink?.touched)">
       <span *ngIf="imgLink?.errors?.['required']">
         Please enter a link to the image.
+      </span>
+      <span *ngIf="imgLink?.errors?.['pattern']">
+        The image link is invalid.
       </span>
     </mat-error>
   </mat-form-field>
@@ -27,6 +41,9 @@
     <mat-error *ngIf="videoLink?.invalid && (videoLink?.dirty || videoLink?.touched)">
       <span *ngIf="videoLink?.errors?.['required']">
         Please enter a link to the video.
+      </span>
+      <span *ngIf="videoLink?.errors?.['pattern']">
+        The video link is invalid.
       </span>
     </mat-error>
   </mat-form-field>

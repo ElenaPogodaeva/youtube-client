@@ -3,6 +3,8 @@ import type { OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from '../../../../app/core/services/validation.service';
 
+const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
+
 @Component({
   selector: 'app-card-form',
   templateUrl: './card-form.component.html',
@@ -15,10 +17,10 @@ export class CardFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.cardForm = this.fb.group({
-      title: ['', [Validators.required]],
-      description: [''],
-      imgLink: ['', [Validators.required]],
-      videoLink: ['', [Validators.required]],
+      title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      description: ['', [Validators.maxLength(255)]],
+      imgLink: ['', [Validators.required, Validators.pattern(reg)]],
+      videoLink: ['', [Validators.required, Validators.pattern(reg)]],
       creationDate: ['', [Validators.required]],
     });
   }
