@@ -8,8 +8,11 @@ export const initialState: YoutubeCardState = {
 
 export const youtubeReducer = createReducer(
   initialState,
-  on(addYoutubeCards, (state, { youtubeCards }): YoutubeCardState => ({
-    ...state,
-    youtubeCards
-  })),
+  on(
+    addYoutubeCards,
+    (state, { youtubeCards }): YoutubeCardState => ({
+      ...state,
+      youtubeCards,
+    }),
+  ),
 );

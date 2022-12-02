@@ -8,8 +8,11 @@ export const initialState: CustomCardState = {
 
 export const cardsReducer = createReducer(
   initialState,
-  on(addCustomCard, (state, { customCard}): CustomCardState => ({
-    ...state,
-    customCards: [...state.customCards, customCard]
-  })),
+  on(
+    addCustomCard,
+    (state, { customCard }): CustomCardState => ({
+      ...state,
+      customCards: [...state.customCards, customCard],
+    }),
+  ),
 );

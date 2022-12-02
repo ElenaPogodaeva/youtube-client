@@ -1,5 +1,5 @@
-import { CardModel } from "../shared/models/card-model"
-import { VideoItemModel } from "../shared/models/video-item.model";
+import { CardModel } from '../shared/models/card-model';
+import { VideoItemModel } from '../shared/models/video-item.model';
 
 export interface CustomCardState {
   customCards: CardModel[];

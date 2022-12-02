@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import type { OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from '../../../../app/core/services/validation.service';
-import { Store } from "@ngrx/store";
+import { Store } from '@ngrx/store';
 import { addCustomCard } from '../../../../app/redux/actions/custom-card.actions';
 
 const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
@@ -15,7 +15,11 @@ const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 export class CardFormComponent implements OnInit {
   cardForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private validationService: ValidationService, private store: Store) {}
+  constructor(
+    private fb: FormBuilder,
+    private validationService: ValidationService,
+    private store: Store,
+  ) {}
 
   ngOnInit(): void {
     this.cardForm = this.fb.group({
@@ -48,6 +52,6 @@ export class CardFormComponent implements OnInit {
   }
 
   public submit() {
-    this.store.dispatch(addCustomCard({customCard: this.cardForm.value}));
+    this.store.dispatch(addCustomCard({ customCard: this.cardForm.value }));
   }
 }
