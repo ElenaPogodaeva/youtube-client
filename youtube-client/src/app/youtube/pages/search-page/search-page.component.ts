@@ -12,16 +12,12 @@ export class SearchPageComponent {
 
   loading$ = this.loadingService.loading$;
 
-  getItems() {
-    return this.youtubeService.videos;
-  }
-
   getFilterState() {
     return this.youtubeService.filterState;
   }
 
-  getSearchTerm() {
-    return this.youtubeService.searchTerm;
+  getFilterTerm() {
+    return this.youtubeService.filterTerm;
   }
 
   getSortField() {
@@ -38,6 +34,6 @@ export class SearchPageComponent {
 
   filterByWord(event: Event) {
     const target = event.target as HTMLInputElement;
-    this.youtubeService.setSearchTerm(target.value);
+    this.youtubeService.setFilterTerm(target.value);
   }
 }

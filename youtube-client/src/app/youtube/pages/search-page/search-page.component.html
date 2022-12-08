@@ -1,4 +1,4 @@
 <app-filter-criteria [isOpen]="getFilterState()" (sorting)="sorting($event)" (filterByWord)="filterByWord($event)"></app-filter-criteria>
 <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
-<app-search-results [items]="getItems()" [searchTerm]="getSearchTerm()" [sortField]="getSortField()" [sortReverse]="getSortReverse()"></app-search-results>
+<app-search-results  [filterTerm]="getFilterTerm()" [sortField]="getSortField()" [sortReverse]="getSortReverse()"></app-search-results>
 
