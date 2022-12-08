@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { SearchItemModel } from '../../shared/models/search-item.model';
-import { map, switchMap } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 import { ApiService } from '../../../app/core/services/api.service';
 import { SearchResponseModel } from '../../../app/shared/models/search-response.model';
 import { VideoItemModel } from '../../../app/shared/models/video-item.model';
 import { VideoResponseModel } from '../../../app/shared/models/video-response.model';
+import { Store } from '@ngrx/store';
+import { addYoutubeCards } from '../../../app/redux/actions/youtube-card.actions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class YoutubeService {
-  videos: VideoItemModel[] = [];
+  videos$?: Observable<VideoItemModel[]>;
 
   filterState: boolean = false;
 
-  searchTerm: string = '';
+  filterTerm: string = '';
 
   sortField: string = '';
 
@@ -22,11 +24,7 @@ export class YoutubeService {
 
   selectedItem: VideoItemModel | undefined;
 
-  constructor(private apiService: ApiService) {}
-
-  getVideos(): VideoItemModel[] {
-    return this.videos;
-  }
+  constructor(private apiService: ApiService, private store: Store) {}
 
   fetchVideos(searchTerm: string) {
     this.apiService
@@ -40,11 +38,13 @@ export class YoutubeService {
             .pipe(map((videoResponse: VideoResponseModel) => videoResponse.items));
         }),
       )
-      .subscribe((data) => (this.videos = data));
+      .subscribe((data) => {
+        this.store.dispatch(addYoutubeCards({ youtubeCards: data }));
+      });
   }
 
-  setSearchTerm(searchTerm: string) {
-    this.searchTerm = searchTerm;
+  setFilterTerm(filterTerm: string) {
+    this.filterTerm = filterTerm;
   }
 
   setSortOptions(sortField: string, sortReverse: boolean) {
@@ -57,6 +57,6 @@ export class YoutubeService {
   }
 
   selectItem(id: string) {
-    this.selectedItem = this.videos.find((item) => item.id === id);
+    //this.selectedItem = this.videos.find((item) => item.id === id);
   }
 }
