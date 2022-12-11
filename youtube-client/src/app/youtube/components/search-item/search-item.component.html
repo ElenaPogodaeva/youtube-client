@@ -21,6 +21,6 @@
   <mat-card-title class="card-title" title="{{item.snippet.title}} #{{item.id}}">{{item.snippet.title}} #{{item.id}}
   </mat-card-title>
   <mat-card-actions>
-    <button type="button" mat-raised-button color="primary" class="card-btn" (click)="onSelect(item)">more...</button>
+    <a type="button" mat-raised-button color="primary" class="card-btn" routerLink="/search/{{item.id}}">more...</a>
   </mat-card-actions>
 </mat-card>

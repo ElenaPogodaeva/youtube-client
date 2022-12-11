@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SearchItemModel } from '../../shared/models/search-item.model';
-import { map, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, map, Observable, switchMap } from 'rxjs';
 import { ApiService } from '../../../app/core/services/api.service';
 import { SearchResponseModel } from '../../../app/shared/models/search-response.model';
 import { VideoItemModel } from '../../../app/shared/models/video-item.model';
@@ -13,6 +13,8 @@ import { addYoutubeCards } from '../../../app/redux/actions/youtube-card.actions
 })
 export class YoutubeService {
   videos$?: Observable<VideoItemModel[]>;
+
+  detailedVideo$ = new BehaviorSubject<VideoItemModel | null>(null);
 
   filterState: boolean = false;
 
@@ -56,7 +58,13 @@ export class YoutubeService {
     this.filterState = !this.filterState;
   }
 
-  selectItem(id: string) {
-    //this.selectedItem = this.videos.find((item) => item.id === id);
+  fetchVideoById(id: string) {
+    this.apiService
+      .getVideosByIds(id)
+      .pipe(map((response: VideoResponseModel) => response.items))
+      .subscribe((data) => {
+        const firstCard = data[0];
+        this.detailedVideo$.next(firstCard);
+      });
   }
 }

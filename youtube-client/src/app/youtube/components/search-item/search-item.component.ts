@@ -12,9 +12,4 @@ export class SearchItemComponent {
   @Input() item?: VideoItemModel;
 
   constructor(private router: Router, private youtubeService: YoutubeService) {}
-
-  onSelect(item: VideoItemModel) {
-    this.youtubeService.selectItem(item.id);
-    this.router.navigate(['/', 'search', item.id]);
-  }
 }
