@@ -13,7 +13,7 @@ export class SortPipe implements PipeTransform {
   transform(value: VideoItemModel[], sortField: string, sortReverse: boolean): VideoItemModel[] {
     if (!value || !value.length || !sortField) return value;
 
-    return value.sort((a, b) => {
+    return [...value].sort((a, b) => {
       const aDate = new Date(a?.snippet?.publishedAt).getTime();
       const bDate = new Date(b?.snippet?.publishedAt).getTime();
       if (sortField === 'date') {
