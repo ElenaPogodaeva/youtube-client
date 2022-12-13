@@ -11,6 +11,7 @@ import { DetailedPageComponent } from './pages/detailed-page/detailed-page.compo
 import { CardFormComponent } from './components/card-form/card-form.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CardItemComponent } from './components/card-item/card-item.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetailedPageComponent,
     CardFormComponent,
     AdminPageComponent,
+    CardItemComponent,
   ],
   imports: [CommonModule, YoutubeRoutingModule, SharedModule, ReactiveFormsModule],
   exports: [

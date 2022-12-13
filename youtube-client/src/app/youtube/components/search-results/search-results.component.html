@@ -1,3 +1,4 @@
-<div class="cards" *ngIf="videos$ | async as items">
-  <app-search-item class="card-item" *ngFor="let item of items | filter:filterTerm | sort:sortField:sortReverse" [item]="item"></app-search-item>
+<div class="cards" *ngIf="videos$ | async as videos">
+  <app-search-item class="card-item" *ngFor="let video of videos | filter:filterTerm | sort:sortField:sortReverse" [item]="video"></app-search-item>
+  <app-card-item class="card-item" *ngFor="let card of cards$ | async" [item]="card"></app-card-item>
 </div>

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidationService } from '../../../../app/core/services/validation.service';
 import { Store } from '@ngrx/store';
 import { addCustomCard } from '../../../../app/redux/actions/custom-card.actions';
+import { Router } from '@angular/router';
 
 const reg = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
 
@@ -19,6 +20,7 @@ export class CardFormComponent implements OnInit {
     private fb: FormBuilder,
     private validationService: ValidationService,
     private store: Store,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -53,5 +55,6 @@ export class CardFormComponent implements OnInit {
 
   public submit() {
     this.store.dispatch(addCustomCard({ customCard: this.cardForm.value }));
+    this.router.navigateByUrl('/search');
   }
 }

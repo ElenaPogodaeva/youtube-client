@@ -1,0 +1,10 @@
+<mat-card class="card" *ngIf="item" [appBorderColor]="item.creationDate">
+  <img mat-card-image [src]="item.imgLink" alt="Card image">
+  <mat-card-title class="card-title" title="{{item.title}}">{{item.title}}
+  </mat-card-title>
+  <mat-card-content>
+    <p>
+      {{item?.description}}
+    </p>
+  </mat-card-content>
+</mat-card>
