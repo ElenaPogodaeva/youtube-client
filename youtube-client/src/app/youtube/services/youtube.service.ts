@@ -7,6 +7,7 @@ import { VideoItemModel } from '../../../app/shared/models/video-item.model';
 import { VideoResponseModel } from '../../../app/shared/models/video-response.model';
 import { Store } from '@ngrx/store';
 import { addYoutubeCards } from '../../../app/redux/actions/youtube-card.actions';
+import { setSearchTerm } from 'src/app/redux/actions/search.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +32,7 @@ export class YoutubeService {
   }
 
   fetchVideos(searchTerm: string) {
-    this.apiService
+    return this.apiService
       .getVideosByWord(searchTerm)
       .pipe(
         map((response: SearchResponseModel) => response.items),
@@ -42,9 +43,6 @@ export class YoutubeService {
             .pipe(map((videoResponse: VideoResponseModel) => videoResponse.items));
         }),
       )
-      .subscribe((data) => {
-        this.store.dispatch(addYoutubeCards({ youtubeCards: data }));
-      });
   }
 
   updateSearchTerm(str: string): void {
@@ -57,7 +55,7 @@ export class YoutubeService {
         filter((value) => value.length > 3),
         debounceTime(500),
       )
-      .subscribe((value) => this.fetchVideos(value));
+      .subscribe((value) => this.store.dispatch(setSearchTerm({ searchTerm: value })));
   }
 
   setFilterTerm(filterTerm: string) {
