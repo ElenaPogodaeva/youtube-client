@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SearchItemModel } from '../../shared/models/search-item.model';
-import { BehaviorSubject, map, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, debounceTime, filter, map, Observable, switchMap } from 'rxjs';
 import { ApiService } from '../../../app/core/services/api.service';
 import { SearchResponseModel } from '../../../app/shared/models/search-response.model';
 import { VideoItemModel } from '../../../app/shared/models/video-item.model';
@@ -14,6 +14,8 @@ import { addYoutubeCards } from '../../../app/redux/actions/youtube-card.actions
 export class YoutubeService {
   videos$?: Observable<VideoItemModel[]>;
 
+  searchTerm$ = new BehaviorSubject<string>('');
+
   detailedVideo$ = new BehaviorSubject<VideoItemModel | null>(null);
 
   filterState: boolean = false;
@@ -24,9 +26,9 @@ export class YoutubeService {
 
   sortReverse: boolean = false;
 
-  selectedItem: VideoItemModel | undefined;
-
-  constructor(private apiService: ApiService, private store: Store) {}
+  constructor(private apiService: ApiService, private store: Store) {
+    this.subscribeToSearchTerm();
+  }
 
   fetchVideos(searchTerm: string) {
     this.apiService
@@ -43,6 +45,19 @@ export class YoutubeService {
       .subscribe((data) => {
         this.store.dispatch(addYoutubeCards({ youtubeCards: data }));
       });
+  }
+
+  updateSearchTerm(str: string): void {
+    this.searchTerm$.next(str);
+  }
+
+  subscribeToSearchTerm() {
+    this.searchTerm$
+      .pipe(
+        filter((value) => value.length > 3),
+        debounceTime(500),
+      )
+      .subscribe((value) => this.fetchVideos(value));
   }
 
   setFilterTerm(filterTerm: string) {
