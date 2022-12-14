@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
-import { YoutubeService } from 'src/app/youtube/services/youtube.service';
+import { YoutubeService } from '../../../app/youtube/services/youtube.service';
 import { setSearchTerm } from '../actions/search.actions';
 import { addYoutubeCards } from '../actions/youtube-card.actions';
 
