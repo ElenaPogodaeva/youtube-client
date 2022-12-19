@@ -1,2 +1,6 @@
-# elenapogodaeva-ANGULAR2022Q3
-Private repository for @elenapogodaeva
+# YouTube client app
+
+## Technologies
+
+Angular, Angular-router, Angular-material, NgRX
+
